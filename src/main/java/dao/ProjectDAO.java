@@ -4,6 +4,7 @@ import jdbc.JDBCConectivity;
 import model.Project;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -20,11 +21,21 @@ public class ProjectDAO implements IDao<Project>{
     @Override
     public Project getElement(int projectId) {
         Project project = new Project();
-
-        String query = "SELECT * FROM Project WHERE id = " + projectId;
+        String query = "SELECT * FROM Project WHERE id_project = " + projectId;
 
         try (Connection conn = connection.getConnection();
-             Statement st = conn.createStatement()) {
+             Statement st = conn.createStatement();
+             ResultSet resultSet = st.executeQuery(query)) {
+            if(resultSet.next()){
+                project.setIdProject(resultSet.getInt("id_project"));
+                project.setManagerName(resultSet.getString("manager_name"));
+                project.setAddress(resultSet.getString("address"));
+                project.setProjectTypeId(resultSet.getInt("ProjectType_id_type"));
+                project.setClientId(resultSet.getInt("Client_id_client"));
+            } else {
+                System.out.println("The idProject provided does not exist");
+            }
+
 
         } catch (SQLException e) {
             System.out.println("Error getting projetct: " + e.getMessage());

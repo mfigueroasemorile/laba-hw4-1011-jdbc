@@ -10,15 +10,17 @@ public class Main {
 
         ProjectDAO projectDAO = new ProjectDAO();
 
-        Project newProject = new Project();
+        /*Project newProject = new Project();
 
         newProject.setManagerName("MIRSE");
         newProject.setAddress("123 Boulevard ave");
         newProject.setProjectTypeId(2);
         newProject.setClientId(2);
 
-        projectDAO.insertElement(newProject);
+        projectDAO.insertElement(newProject);*/
+        Project proj = projectDAO.getElement(2);
+        System.out.println(proj.toString());
 
-        System.out.println("New project inserted succesfully");
+        //System.out.println("New project inserted succesfully");
     }
 }
