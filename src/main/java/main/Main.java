@@ -12,7 +12,7 @@ public class Main {
 
         Project newProject = new Project();
 
-        newProject.setManagerName("MAX F");
+        newProject.setManagerName("MIRSE");
         newProject.setAddress("123 Boulevard ave");
         newProject.setProjectTypeId(2);
         newProject.setClientId(2);
