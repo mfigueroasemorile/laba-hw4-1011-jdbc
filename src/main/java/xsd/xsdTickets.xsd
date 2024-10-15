@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="tickets">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Multiple projects allowed in a file, min 1 -->
+                <xs:element name="ticket" maxOccurs="unbounded" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <!-- Project elements -->
+                            <xs:element name="idTicket" type="xs:int"/>
+                            <xs:element name="total" type="xs:float"/>
+                            <xs:element name="date" type="xs:date"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

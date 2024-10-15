@@ -1,0 +1,18 @@
+<projects>
+    <project>
+        <idProject>1</idProject>
+        <managerName>Charlie Wilson</managerName>
+        <address>123 Boulevard ave</address>
+        <projectTypeId>1</projectTypeId>
+        <clientId>1</clientId>
+        <estimatedDuration>90</estimatedDuration>
+    </project>
+    <project>
+        <idProject>2</idProject>
+        <managerName>Cameron Sands</managerName>
+        <address>534 Boulevard ave</address>
+        <projectTypeId>2</projectTypeId>
+        <clientId>2</clientId>
+        <estimatedDuration>120</estimatedDuration>
+    </project>
+</projects>

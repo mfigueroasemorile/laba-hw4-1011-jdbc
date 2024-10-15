@@ -1,0 +1,18 @@
+<employees>
+    <employee>
+        <idEmployee>2</idEmployee>
+        <name>Maxi</name>
+        <Address>123 Oxford ST</Address>
+        <roleId>1</roleId>
+        <contractId>1</contractId>
+        <gender>Male</gender>
+    </employee>
+    <employee>
+        <idEmployee>2</idEmployee>
+        <name>Michael</name>
+        <Address>123 Boulevard ave</Address>
+        <roleId>2</roleId>
+        <contractId>5</contractId>
+        <gender>Male</gender>
+    </employee>
+</employees>

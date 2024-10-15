@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="employees">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Multiple projects allowed in a file, min 1 -->
+                <xs:element name="employee" maxOccurs="unbounded" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <!-- Project elements -->
+                            <xs:element name="idEmployee" type="xs:int"/>
+                            <xs:element name="name" type="xs:string"/>
+                            <xs:element name="Address" type="xs:string"/>
+                            <xs:element name="roleId" type="xs:int"/>
+                            <xs:element name="contractId" type="xs:int"/>
+                            <xs:element name="gender" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

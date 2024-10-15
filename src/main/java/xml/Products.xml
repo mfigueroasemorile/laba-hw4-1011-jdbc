@@ -1,0 +1,14 @@
+<products>
+    <product>
+        <idProduct>1</idProduct>
+        <description>Bricks</description>
+        <price>5.5</price>
+        <supplierId>1</supplierId>
+    </product>
+    <product>
+        <idProduct>2</idProduct>
+        <description>Wood</description>
+        <price>10.5</price>
+        <supplierId>2</supplierId>
+    </product>
+</products>

@@ -1,0 +1,12 @@
+<tickets>
+    <ticket>
+        <idTicket>1</idTicket>
+        <total>55.4</total>
+        <date>2024-10-10</date>
+    </ticket>
+    <ticket>
+        <idTicket>2</idTicket>
+        <total>65.2</total>
+        <date>2024-09-08</date>
+    </ticket>
+</tickets>
