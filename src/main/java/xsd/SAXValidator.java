@@ -19,13 +19,13 @@ public class SAXValidator {
             // 1. creating SAX parser factory
             SAXParserFactory parserFactory = SAXParserFactory.newInstance();
 
-            parserFactory.setValidating(false); //
+            parserFactory.setValidating(false); //setting DTD as unable
             parserFactory.setNamespaceAware(true); // enable name spaces
             parserFactory.setSchema(getSchema("src/main/java/xsd/" + xsdPath)); // Charging the xsd
 
             SAXParser saxParser = parserFactory.newSAXParser();
 
-            // handler to get errors
+            // annonymous class to handle errors
             DefaultHandler handler = new DefaultHandler() {
                 @Override
                 public void error(SAXParseException e) throws SAXException {

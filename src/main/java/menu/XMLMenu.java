@@ -13,6 +13,7 @@ public class XMLMenu {
         do {
             System.out.println("Select an option:");
             System.out.println("1 - Validate xml");
+            System.out.println("2 - Parse xml");
             System.out.println("0 - Exit");
             option = scanner.nextInt();
             scanner.nextLine();
@@ -25,6 +26,9 @@ public class XMLMenu {
                     String xsdPath = scanner.nextLine();
                     validator.validate(xsdPath, xmlPath);
                     break;
+                case 2:
+                    System.out.println("Parsing xml");
+                    break;
                 case 0:
                     break;
                 default:
@@ -32,9 +36,6 @@ public class XMLMenu {
                     displayXmlMenu();
                     break;
             }
-
-
-
         } while (option != 0) ;
     }
 }
