@@ -55,7 +55,11 @@ public class ProductDAO implements IDao<Product>{
     @Override
     public void insertElement(Product product){
 
-        String query = "INSERT INTO Product () VALUES ()";
+        String query = "INSERT INTO Product (description, price, supplier_id_supplier) VALUES ('"
+                + product.getDescription() + "', "
+                + product.getPrice() + ", "
+                + product.getSupplierId() + ")";
+
         System.out.println(query);
 
         try (Connection conn = connection.getConnection();

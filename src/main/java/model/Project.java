@@ -10,4 +10,5 @@ public class Project {
     private String address;
     private int projectTypeId;
     private int clientId;
+    private int estimatedDuration;
 }

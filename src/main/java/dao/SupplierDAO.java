@@ -55,7 +55,10 @@ public class SupplierDAO implements IDao<Supplier>{
     @Override
     public void insertElement(Supplier supplier){
 
-        String query = "INSERT INTO supplier () VALUES ()";
+        String query = "INSERT INTO supplier (name, description) VALUES ('"
+                + supplier.getName() + "', '"
+                + supplier.getDescription() + "')";
+
         System.out.println(query);
 
         try (Connection conn = connection.getConnection();

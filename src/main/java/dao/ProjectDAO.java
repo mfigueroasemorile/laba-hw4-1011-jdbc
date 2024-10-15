@@ -32,6 +32,7 @@ public class ProjectDAO implements IDao<Project>{
                 project.setAddress(resultSet.getString("address"));
                 project.setProjectTypeId(resultSet.getInt("ProjectType_id_type"));
                 project.setClientId(resultSet.getInt("Client_id_client"));
+                project.setEstimatedDuration(resultSet.getInt("estimated_duration"));
             } else {
                 System.out.println("The idProject provided does not exist");
             }
@@ -48,6 +49,28 @@ public class ProjectDAO implements IDao<Project>{
     public List<Project> getAllElements(){
         List<Project> projectList = new ArrayList<>();
 
+        String query = "SELECT * FROM Project";
+
+        try (Connection conn = connection.getConnection();
+             Statement st = conn.createStatement();
+             ResultSet resultSet = st.executeQuery(query)) {
+            while (resultSet.next()) {
+                Project project = new Project();
+                project.setIdProject(resultSet.getInt("id_project"));
+                project.setManagerName(resultSet.getString("manager_name"));
+                project.setAddress(resultSet.getString("address"));
+                project.setProjectTypeId(resultSet.getInt("ProjectType_id_type"));
+                project.setClientId(resultSet.getInt("Client_id_client"));
+                project.setEstimatedDuration(resultSet.getInt("estimated_duration"));
+                projectList.add(project);
+            }
+            if (projectList.isEmpty()) {
+                System.out.println("There are no projects in db");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting projetct: " + e.getMessage());
+        }
+
         return projectList;
     }
 
@@ -58,6 +81,7 @@ public class ProjectDAO implements IDao<Project>{
                 "VALUES (\"" + project.getManagerName() + "\", \"" + project.getAddress() + "\", " +
                 project.getProjectTypeId() + ", " + project.getClientId() + ")";
 
+        System.out.println(query);
         try (Connection conn = connection.getConnection();
              Statement st = conn.createStatement()) {
 

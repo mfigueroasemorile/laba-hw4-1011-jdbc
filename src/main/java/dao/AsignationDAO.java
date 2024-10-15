@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +55,14 @@ public class AsignationDAO implements IDao<Asignation> {
     @Override
     public void insertElement(Asignation asignation){
 
-        String query = "INSERT INTO Asignation () VALUES ()";
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = formatter.format(asignation.getAsignationDate());
+
+        String query = "INSERT INTO Asignation (Project_id_project, Employee_id_employee, asignation_date) VALUES ("
+                + asignation.getProjectId() + ", "
+                + asignation.getEmployeeId() + ", '"
+                + formattedDate + "')";
+
         System.out.println(query);
 
         try (Connection conn = connection.getConnection();

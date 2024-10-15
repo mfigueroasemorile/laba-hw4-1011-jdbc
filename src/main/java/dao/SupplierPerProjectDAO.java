@@ -1,3 +1,4 @@
+/*
 package dao;
 
 import jdbc.JDBCConectivity;
@@ -80,3 +81,4 @@ public class SupplierPerProjectDAO implements IDao<SupplierPerProject>{
 
     }
 }
+*/
