@@ -31,6 +31,7 @@ public class DataBaseMenu {
                 case 3:
                     //Assign employee to project
                     dbService.assignEmployee();
+                    break;
                 case 4:
                     //Create supplier
                     dbService.createSupplier();

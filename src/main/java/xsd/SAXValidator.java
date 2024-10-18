@@ -1,5 +1,6 @@
 package xsd;
 
+import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -13,10 +14,12 @@ import java.io.File;
 
 public class SAXValidator {
 
+    private int indentLevel = 0;
+
     public void validate(String xsdPath, String xmlPath){
 
         try {
-            // 1. creating SAX parser factory
+            // creating SAX parser factory
             SAXParserFactory parserFactory = SAXParserFactory.newInstance();
 
             parserFactory.setValidating(false); //setting DTD as unable
@@ -43,6 +46,7 @@ public class SAXValidator {
                 public void warning(SAXParseException e) throws SAXException {
                     System.out.println("Warning: " + e.getMessage());
                 }
+
             };
 
             //Validate XML
@@ -54,6 +58,57 @@ public class SAXValidator {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+
+    public void parse(String xmlPath) {
+        try {
+
+
+            SAXParserFactory parserFactory = SAXParserFactory.newInstance();
+            parserFactory.setNamespaceAware(true);
+            SAXParser saxParser = parserFactory.newSAXParser();
+
+
+            DefaultHandler handler = new DefaultHandler() {
+                @Override
+                public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+                    System.out.print(getIndentation() + "<" + qName);
+                    // print attributes
+                    for (int i = 0; i < attributes.getLength(); i++) {
+                        System.out.print(" " + attributes.getQName(i) + "=\"" + attributes.getValue(i) + "\"");
+                    }
+                    System.out.println(">");
+                    indentLevel++;
+                }
+
+                @Override
+                public void characters(char[] ch, int start, int length) throws SAXException {
+                    String content = new String(ch, start, length).trim();
+                    if (!content.isEmpty()) {
+                        System.out.println(getIndentation() + content);
+                    }
+                }
+
+                @Override
+                public void endElement(String uri, String localName, String qName) throws SAXException {
+                    indentLevel--;
+                    System.out.println(getIndentation() + "</" + qName + ">");
+                }
+            };
+
+            File xmlFile = new File("src/main/java/xml/" + xmlPath);
+            saxParser.parse(xmlFile, handler);
+
+            System.out.println("The file " + xmlPath + " has been parsed successfully");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private String getIndentation() {
+        return " ".repeat(indentLevel * 2);
     }
 
     private static Schema getSchema(String schemaPath) throws SAXException {
