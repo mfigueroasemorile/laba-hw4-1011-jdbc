@@ -1,0 +1,18 @@
+{
+  "id_project" : 0,
+  "manager_name" : "max",
+  "address" : "123 ads",
+  "project_type" : 1,
+  "client_id" : 2,
+  "estimated_duration" : 0,
+  "tasks" : [ {
+    "id_task" : 0,
+    "description" : "lijar pisos"
+  }, {
+    "id_task" : 0,
+    "description" : "pulir paredes"
+  }, {
+    "id_task" : 0,
+    "description" : "pastinar patio"
+  } ]
+}

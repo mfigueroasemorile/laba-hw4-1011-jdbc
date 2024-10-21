@@ -17,6 +17,7 @@ public class ParseMenu {
         Scanner scanner = new Scanner(System.in);
         JAXBParser parser = new JAXBParser();
 
+
             System.out.println("Choose object to parse: ");
             System.out.println("1 - Project");
             System.out.println("2 - Employee");
@@ -44,7 +45,6 @@ public class ParseMenu {
                     project.setAddress(address);
                     project.setProjectTypeId(type);
                     project.setClientId(client);
-
                     parser.parse(project);
                     break;
                 case 2:
