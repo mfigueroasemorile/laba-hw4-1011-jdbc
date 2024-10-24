@@ -28,4 +28,16 @@ public class Project {
     private int estimatedDuration;
     @JsonProperty("tasks")
     private List<Task> tasks;
+
+
+    public Project (String managerName, String address, int projectTypeId, int clientId){
+        this.managerName = managerName;
+        this.address = address;
+        this.projectTypeId = projectTypeId;
+        this.clientId = clientId;
+    }
+    public Project(){
+
+    }
+
 }

@@ -17,4 +17,11 @@ public class Supplier {
     private String name;
     @JsonProperty("description")
     private String description;
+
+    public Supplier (String name, String description){
+        this.name = name;
+        this.description = description;
+    }
+
+    public Supplier(){}
 }

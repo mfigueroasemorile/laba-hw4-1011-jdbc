@@ -20,4 +20,13 @@ public class Ticket {
     private float total;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date date;
+
+    public Ticket (float total, Date date){
+        this.total = total;
+        this.date = date;
+    }
+
+    public Ticket (){
+
+    }
 }

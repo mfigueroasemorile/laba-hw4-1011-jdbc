@@ -10,5 +10,10 @@ public class Task {
     private int idTask;
     @JsonProperty("description")
     private String description;
+
+    public Task (int idTask, String description) {
+        this.idTask = idTask;
+        this.description = description;
+    }
     
 }

@@ -110,11 +110,7 @@ public class JsonMenu {
                 String address = scanner.nextLine();
                 System.out.println("Insert project client id: ");
                 int client = scanner.nextInt();
-                Project project = new Project();
-                project.setManagerName(name);
-                project.setAddress(address);
-                project.setProjectTypeId(type);
-                project.setClientId(client);
+                Project project = new Project(name,address,type,client);
                 scanner.nextLine();
                 List<Task> taskList = new ArrayList<>();
                 System.out.println("Do you want to create a new task? y/n");
@@ -122,12 +118,9 @@ public class JsonMenu {
                 int idTask = 1001;
 
                 while (tasks.equals("y")) {
-                    Task newTask = new Task();
                     System.out.println("Insert task description: ");
                     String description = scanner.nextLine();
-                    newTask.setDescription(description);
-                    newTask.setIdTask(idTask);
-
+                    Task newTask = new Task(idTask, description);
                     taskList.add(newTask);
                     System.out.println("Do you want to create a new task? y/n");
                     tasks = scanner.nextLine();
@@ -143,7 +136,6 @@ public class JsonMenu {
                 }
                 return (T) project;
             case 2:
-                //scanner.nextLine();
                 System.out.println("Insert employee name: ");
                 String employeeName = scanner.nextLine();
                 System.out.println("Insert address: ");
@@ -156,13 +148,7 @@ public class JsonMenu {
                 scanner.nextLine();
                 System.out.println("Insert gender: ");
                 String gender = scanner.nextLine();
-
-                Employee employee = new Employee();
-                employee.setGender(gender);
-                employee.setName(employeeName);
-                employee.setAddress(employeeAddress);
-                employee.setRoleId(role);
-                employee.setContractId(contractId);
+                Employee employee = new Employee(employeeName,employeeAddress,contractId,role,gender);
                 return (T) employee;
             case 3:
                 scanner.nextLine();
@@ -170,10 +156,7 @@ public class JsonMenu {
                 String supplierName = scanner.nextLine();
                 System.out.println("Insert description: ");
                 String supplierDescription = scanner.nextLine();
-                Supplier supplier = new Supplier();
-
-                supplier.setName(supplierName);
-                supplier.setDescription(supplierDescription);
+                Supplier supplier = new Supplier(supplierName,supplierDescription);
                 return (T) supplier;
             case 4:
                 System.out.println("Insert description: ");
@@ -184,10 +167,7 @@ public class JsonMenu {
                 int supId = scanner.nextInt();
                 scanner.nextLine();
 
-                Product product = new Product();
-                product.setPrice(price);
-                product.setDescription(productDesc);
-                product.setSupplierId(supId);
+                Product product = new Product(productDesc,price,supId);
                 return (T) product;
             case 5:
                 System.out.println("Insert total amount: ");
@@ -196,14 +176,11 @@ public class JsonMenu {
                 System.out.println("Date: ");
                 String date = scanner.nextLine();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                // Parsear el String a LocalDate
+
                 LocalDate localDate = LocalDate.parse(date, formatter);
                 Date parsedDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 System.out.println("Insert contract id: ");
-
-                Ticket ticket = new Ticket();
-                ticket.setTotal(total);
-                ticket.setDate(parsedDate);
+                Ticket ticket = new Ticket(total,parsedDate);
                 return (T) ticket;
             default:
                 System.out.println("Opción inválida.");

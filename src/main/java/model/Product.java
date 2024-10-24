@@ -19,4 +19,14 @@ public class Product {
     private float price;
     @JsonProperty("id_supplier")
     private int supplierId;
+
+
+    public Product(String description, float price, int supplierId) {
+        this.description = description;
+        this.price = price;
+        this.supplierId = supplierId;
+    }
+
+    public Product() {
+    }
 }
