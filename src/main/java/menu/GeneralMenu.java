@@ -10,6 +10,7 @@ public class GeneralMenu {
         System.out.println("Choose an option:");
         System.out.println("1 - Database");
         System.out.println("2 - XML");
+        System.out.println("3 - Json");
 
         int option = scanner.nextInt();
 
@@ -19,6 +20,9 @@ public class GeneralMenu {
                 break;
             case 2:
                 displayXMLMenu();
+                break;
+            case 3:
+                displayJsonMenu();
                 break;
             default:
                 System.out.println("Invalid option, try again");
@@ -37,5 +41,10 @@ public class GeneralMenu {
 
         XMLMenu xmlMenu = new XMLMenu();
         xmlMenu.displayXmlMenu();
+    }
+
+    private void  displayJsonMenu(){
+        JsonMenu jsonMenu = new JsonMenu();
+        jsonMenu.displayJsonMenu();
     }
 }
