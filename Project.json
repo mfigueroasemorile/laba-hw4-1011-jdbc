@@ -1,18 +1,18 @@
 {
   "id_project" : 0,
-  "manager_name" : "max",
-  "address" : "123 ads",
+  "manager_name" : "Maxi",
+  "address" : "123 exampl st",
   "project_type" : 1,
   "client_id" : 2,
   "estimated_duration" : 0,
   "tasks" : [ {
-    "id_task" : 0,
-    "description" : "lijar pisos"
+    "id_task" : 1001,
+    "description" : "paint walls"
   }, {
-    "id_task" : 0,
-    "description" : "pulir paredes"
+    "id_task" : 1002,
+    "description" : "set up windows"
   }, {
-    "id_task" : 0,
-    "description" : "pastinar patio"
+    "id_task" : 1003,
+    "description" : "set up bath accesories"
   } ]
 }

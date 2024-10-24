@@ -119,15 +119,19 @@ public class JsonMenu {
                 List<Task> taskList = new ArrayList<>();
                 System.out.println("Do you want to create a new task? y/n");
                 String tasks = scanner.nextLine();
+                int idTask = 1001;
 
                 while (tasks.equals("y")) {
                     Task newTask = new Task();
+                    System.out.println("Insert task description: ");
                     String description = scanner.nextLine();
                     newTask.setDescription(description);
+                    newTask.setIdTask(idTask);
 
                     taskList.add(newTask);
                     System.out.println("Do you want to create a new task? y/n");
                     tasks = scanner.nextLine();
+                    idTask ++;
                 }
 
                 if (tasks.equals("n")) {
