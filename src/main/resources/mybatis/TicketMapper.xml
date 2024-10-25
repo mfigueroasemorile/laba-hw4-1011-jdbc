@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.TicketMapper">
+
+    <select id="selectTicketById" parameterType="int" resultType="model.Ticket">
+        SELECT
+        id_ticket AS idTicket,
+        total,
+        date
+        FROM Ticket
+        WHERE id_ticket = #{id}
+    </select>
+
+    <insert id="insertTicket" parameterType="model.Ticket">
+        INSERT INTO Ticket (total, date)
+        VALUES (#{total}, #{date})
+    </insert>
+
+    <update id="updateTicket" parameterType="model.Ticket">
+        UPDATE Ticket SET total = #{total}, date = #{date} WHERE id_ticket = #{idTicket}
+    </update>
+
+    <delete id="deleteTicketById" parameterType="int">
+        DELETE FROM Ticket WHERE id_ticket = #{id}
+    </delete>
+</mapper>

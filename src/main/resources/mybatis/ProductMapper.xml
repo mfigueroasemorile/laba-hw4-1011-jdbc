@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.ProductMapper">
+
+    <select id="selectProductById" parameterType="int" resultType="model.Product">
+        SELECT
+        id_product AS idProduct,
+        description,
+        price,
+        Supplier_id_supplier AS supplierId
+        FROM Product
+        WHERE id_product = #{id}
+    </select>
+
+    <insert id="insertProduct" parameterType="model.Product">
+        INSERT INTO Product (description, price, Supplier_id_supplier)
+        VALUES (#{description}, #{price}, #{supplierId})
+    </insert>
+
+    <update id="updateProduct" parameterType="model.Product">
+        UPDATE Product SET description = #{description}, price = #{price}, Supplier_id_supplier = #{supplierId} WHERE id_product = #{idProduct}
+    </update>
+
+    <delete id="deleteProductById" parameterType="int">
+        DELETE FROM Product WHERE id_product = #{id}
+    </delete>
+</mapper>

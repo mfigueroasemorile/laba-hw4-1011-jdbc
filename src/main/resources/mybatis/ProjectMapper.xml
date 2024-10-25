@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.ProjectMapper">
+
+    <select id="selectProjectById" parameterType="int" resultType="model.Project">
+        SELECT
+        id_project AS idProject,
+        manager_name AS managerName,
+        address,
+        ProjectType_id_type AS projectTypeId,
+        Client_id_client AS clientId,
+        estimated_duration AS estimatedDuration
+        FROM Project
+        WHERE id_project = #{id}
+    </select>
+
+    <insert id="insertProject" parameterType="model.Project">
+        INSERT INTO Project (manager_name, address, ProjectType_id_type, Client_id_client, estimated_duration)
+        VALUES (#{managerName}, #{address}, #{projectTypeId}, #{clientId}, #{estimatedDuration})
+    </insert>
+
+    <update id="updateProject" parameterType="model.Project">
+        UPDATE Project SET manager_name = #{managerName}, address = #{address}, ProjectType_id_type = #{projectTypeId}, Client_id_client = #{clientId}, estimated_duration = #{estimatedDuration} WHERE id_project = #{idProject}
+    </update>
+
+    <delete id="deleteProjectById" parameterType="int">
+        DELETE FROM Project WHERE id_project = #{id}
+    </delete>
+</mapper>

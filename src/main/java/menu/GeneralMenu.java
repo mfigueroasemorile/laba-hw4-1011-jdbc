@@ -11,6 +11,7 @@ public class GeneralMenu {
         System.out.println("1 - Database");
         System.out.println("2 - XML");
         System.out.println("3 - Json");
+        System.out.println("4 - MyBatis");
 
         int option = scanner.nextInt();
 
@@ -23,6 +24,9 @@ public class GeneralMenu {
                 break;
             case 3:
                 displayJsonMenu();
+                break;
+            case 4:
+                displayMyBatisMenu();
                 break;
             default:
                 System.out.println("Invalid option, try again");
@@ -46,5 +50,10 @@ public class GeneralMenu {
     private void  displayJsonMenu(){
         JsonMenu jsonMenu = new JsonMenu();
         jsonMenu.displayJsonMenu();
+    }
+
+    private void displayMyBatisMenu(){
+        MyBatisMenu myBatisMenu = new MyBatisMenu();
+        myBatisMenu.displayMenu();
     }
 }

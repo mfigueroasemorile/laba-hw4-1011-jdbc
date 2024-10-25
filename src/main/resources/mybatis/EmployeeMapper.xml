@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.EmployeeMapper">
+
+    <select id="selectEmployeeById" parameterType="int" resultType="model.Employee">
+        SELECT
+        id_employee AS idEmployee,
+        name,
+        address,
+        Role_id_role AS roleId,
+        Contract_id_contract AS contractId,
+        gender
+        FROM Employee
+        WHERE id_employee = #{id}
+    </select>
+
+    <insert id="insertEmployee" parameterType="model.Employee">
+        INSERT INTO Employee (name, address, Role_id_role, Contract_id_contract, gender)
+        VALUES (#{name}, #{address}, #{roleId}, #{contractId}, #{gender})
+    </insert>
+
+    <update id="updateEmployee" parameterType="model.Employee">
+        UPDATE Employee SET name = #{name},
+        address = #{address},
+        Role_id_role = #{roleId},
+        Contract_id_contract = #{contractId},
+        gender = #{gender}
+        WHERE id_employee = #{idEmployee}
+    </update>
+
+    <delete id="deleteEmployeeById" parameterType="int">
+        DELETE FROM Employee WHERE id_employee = #{id}
+    </delete>
+</mapper>
