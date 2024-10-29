@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.SupplierMapper">
+
+    <select id="selectSupplierById" parameterType="int" resultType="model.Supplier">
+        SELECT
+        id_supplier AS idSupplier,
+        name,
+        description
+        FROM supplier
+        WHERE id_supplier = #{id}
+    </select>
+
+    <insert id="insertSupplier" parameterType="model.Supplier">
+        INSERT INTO supplier (name, description)
+        VALUES (#{name}, #{description})
+    </insert>
+
+    <update id="updateSupplier" parameterType="model.Supplier">
+        UPDATE supplier SET name = #{name}, description = #{description} WHERE id_supplier = #{idSupplier}
+    </update>
+
+    <delete id="deleteSupplierById" parameterType="int">
+        DELETE FROM supplier WHERE id_supplier = #{id}
+    </delete>
+</mapper>

@@ -1,6 +1,7 @@
 package dao;
 
 import model.Employee;
+import model.Project;
 
 import java.util.List;
 

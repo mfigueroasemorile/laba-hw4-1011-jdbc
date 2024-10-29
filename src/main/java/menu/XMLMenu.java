@@ -8,10 +8,10 @@ import java.util.Scanner;
 public class XMLMenu {
 
     public void displayXmlMenu() {
-        Scanner scanner = new Scanner(System.in);
         SAXValidator validator = new SAXValidator();
         JAXBParser jaxbParser = new JAXBParser();
         ParseMenu parseMenu = new ParseMenu();
+        Scanner scanner = new Scanner(System.in);
         int option;
         do {
             System.out.println("Select an option:");
