@@ -4,6 +4,8 @@ import dao.IDao;
 import model.*;
 import mybatis.EmployeeMapper;
 import service.*;
+import utils.AbstractFactory;
+import utils.Factory;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,7 +18,7 @@ public class MyBatisMenu {
     public void displayMenu() {
 
 
-
+        AbstractFactory factory = new Factory();
         Scanner scanner = new Scanner(System.in);
         int option;
         do {
@@ -52,7 +54,8 @@ public class MyBatisMenu {
                             System.out.println("Insert client id: ");
                             int clientId = scanner.nextInt();
 
-                            Project project = new Project(managerName,address,typeId,clientId);
+                            Project project = factory.createProject(managerName,address,typeId,clientId);
+
                             projectService.insertElement(project);
                             break;
                         case 2:
@@ -92,9 +95,8 @@ public class MyBatisMenu {
                                     newClientId = Integer.parseInt(newClientIdInput);
                                 }
 
-                                Project updatedProject = new Project(newManagerName,newAddress,newTypeId,newClientId);
+                                Project updatedProject = factory.createProject(newManagerName,newAddress,newTypeId,newClientId);
                                 updatedProject.setIdProject(idProject);
-
                                 projectService.updateElement(updatedProject);
 
                             } catch (Exception e){
@@ -135,7 +137,7 @@ public class MyBatisMenu {
                             System.out.println("Insert supplier id: ");
                             int supplierId = scanner.nextInt();
 
-                            Product product = new Product(description, price, supplierId);
+                            Product product = factory.createProduct(description, price, supplierId);
                             productService.insertElement(product);
                             break;
                         case 2:
@@ -170,7 +172,7 @@ public class MyBatisMenu {
                                 }
 
 
-                                Product updatedProduct = new Product(newDescription, newPrice, newSupplierId);
+                                Product updatedProduct = factory.createProduct(newDescription, newPrice, newSupplierId);
                                 updatedProduct.setIdProduct(idProduct);
 
                                 productService.updateElement(updatedProduct);
@@ -210,7 +212,7 @@ public class MyBatisMenu {
                             System.out.println("Insert description: ");
                             String description = scanner.nextLine();
 
-                            Supplier supplier = new Supplier(name, description);
+                            Supplier supplier = factory.createSupplier(name, description);
                             supplierService.insertElement(supplier);
                             break;
                         case 2:
@@ -233,7 +235,7 @@ public class MyBatisMenu {
                                 }
 
 
-                                Supplier updatedSupplier = new Supplier(newName,newDescription);
+                                Supplier updatedSupplier = factory.createSupplier(newName,newDescription);
                                 updatedSupplier.setIdSupplier(idSupplier);
 
                                 supplierService.updateElement(updatedSupplier);
@@ -286,7 +288,7 @@ public class MyBatisMenu {
                             System.out.println("Insert gender: ");
                             String gender = scanner.nextLine();
 
-                            Employee employee = new Employee(name,address,roleId,contractId,gender);
+                            Employee employee = factory.createEmployee(name,address,roleId,contractId,gender);
                             employeeService.insertElement(employee);
                             break;
                         case 2:
@@ -332,7 +334,7 @@ public class MyBatisMenu {
                                     newGender = oldEmployee.getGender();
                                 }
 
-                                Employee updatedEmployee = new Employee(newName, newAddress, newRoleId, newContractId, newGender);
+                                Employee updatedEmployee = factory.createEmployee(newName, newAddress, newRoleId, newContractId, newGender);
                                 updatedEmployee.setIdEmployee(idEmployee);
 
                                 employeeService.updateElement(updatedEmployee);
